@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Income Page - Kelompok 5</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="style2.css"/>
+    </head>
+
+    <body>
+        <div class="container-fluid text-center">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand justify-content-center" href="#">
+                    <img src="mtimages/moneyimg.png" alt="Bootstrap" class="navbar-logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse  justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="moneyexpense.html">Main</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="incomemoney.html">Income</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="outcomemoney.html">Outcome</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="aboutmoney.html">About Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span id="welcomeMessage" class="navbar-text">
+                    </span>
+                    <script>
+                        var username = localStorage.getItem("nama");
+                        var today = new Date();
+                        var hour = today.getHours();
+                        var greeting;
+                        if (hour < 12) {
+                            greeting = "Good Morning";
+                        } else if (hour < 18) {
+                            greeting = "Good Afternoon";
+                        } else {
+                            greeting = "Good Night";
+                        }
+                        document.getElementById("welcomeMessage").textContent = greeting + ", " + username;
+                    </script>
+                </div>
+            </nav>
+
+            <h3><script>
+                var username = localStorage.getItem("nama"); // Ambil nama pengguna dari localStorage
+                document.write(username + "'s Income<br/>");
+            </script></h3>
+
+            <form id="formIncome" class="p-3 container-fluid">
+                <div class="mb-3">
+                    <label for="namaPemasukan" class="form-label text-start fw-bold">Transaction Name</label>
+                    <input type="text" class="form-control" id="namaPemasukan" name="namaPemasukan">
+                </div>
+                <div class="mb-3">
+                    <label for="jumlahPemasukan" class="form-label text-start fw-bold">Transaction Nominal</label>
+                    <input type="number" class="form-control" id="jumlahPemasukan" name="jumlahPemasukan">
+                </div>
+                <div class="mb-3 container-fluid" align="center">
+                    <label for="transactionType" class="form-label text-start fw-bold" align="center">Transaction Type</label>
+                    <select id="transactionType" class="form-select" name="transactionType">
+                        <option value="Makan">Makan</option>
+                        <option value="Main">Main</option>
+                        <option value="Edukasi">Edukasi</option>
+                        <option value="Belanja">Belanja</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" onclick="validateForm()">Submit</button>
+            </form>
+        <script>
+            function validateForm() {
+            var namaPemasukan = document.getElementById('namaPemasukan').value;
+            var jumlahPemasukan = document.getElementById('jumlahPemasukan').value;
+            var transactionType = document.getElementById('transactionType').value;
+
+             if (namaPemasukan == "" || jumlahPemasukan == "" || transactionType == "") {
+            alert("Transaksi belum selesai, silakan lengkapi formulir!");
+            } else {
+                addIncome(namaPemasukan, jumlahPemasukan, transactionType);
+                alert("Transaksi sukses!");
+            }
+        }
+
+            function addIncome(name, amount, type) {
+            var incomes = JSON.parse(localStorage.getItem('incomes')) || [];
+            incomes.push({ nama: name, jumlah: amount, type: type });
+            localStorage.setItem('incomes', JSON.stringify(incomes));
+    }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

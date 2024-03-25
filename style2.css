@@ -1,0 +1,118 @@
+body{
+    background-image: url('mtimages/tokyo-japan-wallpaper.jpg');
+    display: flex;
+    background-position: center;
+    background-size: auto;
+    object-fit: contain;
+}
+.white-background {
+    background-color: white;
+    padding: 20px;
+    margin: 25px;
+    border-radius: 5px;
+}
+.login{
+    align-content:center;
+    width:30%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+}
+.login img{
+    width:50%;
+}
+.navbar{
+    width:100%;
+}
+.navbar-logo {
+    width: 30px;
+    height: 24px;
+    margin-right: 10px;
+}
+.login button{
+    border-radius:100px;
+    background-color:rgb(255, 59, 59);
+    color:aliceblue;
+}
+#formIncome{
+    width:50%;
+    align-content:center;
+}
+#nama{
+    width: 250px;
+    height: 35px;
+    border-color: #000000;
+}
+
+#button{
+    width: 120px;
+}
+
+.transactionTable{
+    padding: 1000px;
+}
+
+#transactionType {
+    width: 200px;
+    text-align: center;
+}
+
+.container{
+    width:100%;
+}
+
+.container a{
+    text-decoration: none;
+}
+
+.card img{
+    height: auto;
+    border: 10px;
+    border-color: #ffc400;
+    transition: .3s;
+}
+.card img:hover{
+transform: scale(1.2);
+}
+.card{
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow .3s;
+    display: flex;
+}
+.card::before, .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #fff;
+    transition: transform .3s;
+    z-index: -1;
+  }
+  
+  .card::before {
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transform: scale(.9);
+  }
+  
+  .card::after {
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    transform: scale(.8);
+  }
+  
+  .card:hover::before, .card:hover::after {
+    transform: scale(1);
+  }
+
+.delete-button {
+    display: none;
+    background-color: #ffffff;
+}
+
+.card:hover .delete-button {
+    display: block;
+}
+
